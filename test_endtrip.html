@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Test End Trip Robot Stop</title>
+</head>
+<body>
+    <h1>Test Robot Stop When End Trip Clicked</h1>
+    <button onclick="testRobotStop()">Simulate End Trip Click</button>
+    <pre id="output"></pre>
+
+    <script>
+        const BACKEND_URL = "http://localhost:8000";
+        const output = document.getElementById('output');
+
+        async function testRobotStop() {
+            output.textContent = "Testing robot stop...\n";
+            
+            try {
+                output.textContent += "1. Calling /robot/stop endpoint...\n";
+                const robotResponse = await fetch(`${BACKEND_URL}/robot/stop`, {
+                    method: "POST",
+                });
+
+                output.textContent += `2. Response status: ${robotResponse.status}\n`;
+                
+                if (robotResponse.ok) {
+                    const result = await robotResponse.json();
+                    output.textContent += `3. ✅ Success!\n`;
+                    output.textContent += JSON.stringify(result, null, 2) + "\n";
+                    
+                    // Check Firebase
+                    output.textContent += "\n4. Checking Firebase...\n";
+                    const firebaseResponse = await fetch('https://theguidingrobot-default-rtdb.asia-southeast1.firebasedatabase.app/devices/esp32B/navigation_direction.json');
+                    const firebaseData = await firebaseResponse.json();
+                    output.textContent += "Firebase data:\n" + JSON.stringify(firebaseData, null, 2) + "\n";
+                    
+                    if (firebaseData && firebaseData.direction === 'stopped') {
+                        output.textContent += "\n✅ Firebase correctly shows 'stopped'!\n";
+                    } else {
+                        output.textContent += "\n⚠️ Firebase does NOT show 'stopped'\n";
+                    }
+                } else {
+                    output.textContent += `3. ❌ Error: ${robotResponse.status}\n`;
+                    const errorText = await robotResponse.text();
+                    output.textContent += errorText + "\n";
+                }
+            } catch (error) {
+                output.textContent += `❌ Error: ${error.message}\n`;
+            }
+        }
+    </script>
+</body>
+</html>
