@@ -18,51 +18,77 @@ Both controllers communicate through Firebase Realtime Database, enabling synchr
 
 ## 🔧 Hardware Components
 ESP32 Dev Module (Base Controller)
+
 ESP32-CAM Module (Vision Processing)
+
 HC-SR04 Ultrasonic Sensors (Front, Left, Right)
+
 L298N Motor Driver
+
 DC Motors & Chassis
+
 Power Supply Module
 
 ## 🤖 Core Features
 Real-time obstacle detection using ultrasonic sensors
+
 Image-based obstacle recognition via on-device vision AI
+
 Continuous movement with adaptive turning (no stop-and-check logic)
+
 Path deviation handling with automatic return-to-original direction
+
 Dual ESP32 communication via Firebase
 
 #### Mobile application integration with:
 Google Maps navigation
+
 Voice-assisted turn-by-turn guidance
+
 Modular design allowing future IMU integration
 
 ## 🧩 Navigation Logic (Base Unit)
 Continuously reads ultrasonic sensor data while moving
+
 Calculates obstacle proximity dynamically
+
 Adjusts turning angle and speed proportionally
+
 Avoids obstacles without halting movement
+
 Gradually realigns with the original path after clearance
 
 #### This logic ensures smooth, human-like navigation suitable for real-world usage.
 
 ## 🌐 Communication & Cloud
 Firebase Realtime Database
+
 Sensor data synchronization
+
 Inter-ESP32 communication
+
 Status monitoring for mobile app
+
 ESP-NOW
+
 Low-latency local communication between controllers
 
 ## 📱 Mobile Application
 Google Maps–based routing
+
 Voice-based destination input
 #### Audio feedback for:
 Turns (left/right/forward)
+
 Detected obstacles (people, objects, bending posture, etc.)
+
 Hands-free interaction via connected earpiece
 
 ## 🚀 Future Improvements
 IMU-based orientation correction
+
 Enhanced sensor fusion (vision + distance confidence scoring)
+
 Improved outdoor robustness
+
 Custom lightweight object detection models
