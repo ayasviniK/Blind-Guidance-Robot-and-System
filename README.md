@@ -8,6 +8,7 @@ This project was developed as an academic–professional prototype with a strong
 
 ## 🧠 System Architecture
 The system follows a distributed architecture using two ESP32-based controllers:
+
 ESP32 (Base Unit)
 >Handles obstacle detection, motor control, and real-time navigation decisions.
 
@@ -15,6 +16,7 @@ ESP32-CAM (Vision Unit)
 >Performs image-based obstacle recognition using Google’s on-device vision APIs.
 
 Both controllers communicate through Firebase Realtime Database, enabling synchronized decision-making and scalability.
+
 
 ## 🔧 Hardware Components
 ESP32 Dev Module (Base Controller)
@@ -28,6 +30,7 @@ L298N Motor Driver
 DC Motors & Chassis
 
 Power Supply Module
+
 
 ## 🤖 Core Features
 Real-time obstacle detection using ultrasonic sensors
@@ -47,6 +50,7 @@ Voice-assisted turn-by-turn guidance
 
 Modular design allowing future IMU integration
 
+
 ## 🧩 Navigation Logic (Base Unit)
 Continuously reads ultrasonic sensor data while moving
 
@@ -59,6 +63,7 @@ Avoids obstacles without halting movement
 Gradually realigns with the original path after clearance
 
 #### This logic ensures smooth, human-like navigation suitable for real-world usage.
+
 
 ## 🌐 Communication & Cloud
 Firebase Realtime Database
@@ -73,6 +78,7 @@ ESP-NOW
 
 Low-latency local communication between controllers
 
+
 ## 📱 Mobile Application
 Google Maps–based routing
 
@@ -83,6 +89,7 @@ Turns (left/right/forward)
 Detected obstacles (people, objects, bending posture, etc.)
 
 Hands-free interaction via connected earpiece
+
 
 ## 🚀 Future Improvements
 IMU-based orientation correction
