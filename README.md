@@ -76,3 +76,7 @@ Enhanced sensor fusion (vision + distance confidence scoring)
 Improved outdoor robustness
 
 Custom lightweight object detection models
+
+# Group Members
+ayasviniK
+Sadukasam09 
