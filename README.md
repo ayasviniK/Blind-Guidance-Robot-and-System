@@ -78,6 +78,6 @@ Improved outdoor robustness
 Custom lightweight object detection models
 
 # 👥 Contributors
-@ayasviniK
-@Sadukasam09 
-@
+- @ayasviniK
+- @Sadukasam09 
+- @
